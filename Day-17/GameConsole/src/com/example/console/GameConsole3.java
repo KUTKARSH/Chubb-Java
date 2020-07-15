@@ -50,7 +50,7 @@ public class GameConsole3 {
 
         // Throw Exception if Animal which is not in the game is added
         animalGame.addToSpeakingCompetition(Arrays.asList("Cookie"));
-        
+
     }
 
 }
