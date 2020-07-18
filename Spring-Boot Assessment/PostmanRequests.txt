@@ -1,0 +1,51 @@
+// register as a user with proper information
+// role can be user/agent/admin
+
+curl --location --request POST 'http://localhost:8080/user/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email" : "user3@gmail.com",
+    "password" : "1234",
+    "role" : "user"
+}'
+
+// create a flight
+
+curl --location --request POST 'http://localhost:8080/flight/create' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "flightNumber" : 101,
+    "origin" : "BLR",
+    "destination" : "GOP",
+    "seats" : 5,
+    "departure" : "9:10 AM",
+    "arrival" : "11:30 AM"
+}'
+
+// reserve a seat, here if user account is created by agent, then userId will be null in request body
+// if a user books a set for himself/herself, then agentId will be null in request body
+
+curl --location --request POST 'http://localhost:8080/reservation/reserve' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "flightNumber" : 103,
+    "seatNo" : 3,
+    "agentId" : 2,
+    "userId" : 2
+}'
+
+// get seat availability for a flightId
+
+curl --location --request GET 'http://localhost:8080/flight/getMap/103'
+
+// get reservations by userId
+
+curl --location --request GET 'http://localhost:8080/user/getReservations/1'
+
+// cancel a particular reservation id
+
+curl --location --request GET 'http://localhost:8080/reservation/cancel/5'
+
+// get clients for a given agent id
+
+curl --location --request GET 'http://localhost:8080/user/getClients/2'
