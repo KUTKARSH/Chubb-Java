@@ -1,3 +1,8 @@
+// NOTE : H2 in-memory database has been used for simplicity in this assessment
+// so that the Guvi examiners can test the app on the fly without setting up anything.
+// Moreover, adding SQL Server database is no big deal, you have to just change the
+application.properties by file specifyning jdbc url, username, password & Dialect type
+
 // register as a user with proper information
 // role can be user/agent/admin
 
