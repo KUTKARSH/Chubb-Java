@@ -10,6 +10,8 @@ import com.example.reservation.Repository.SeatMapRepository;
 import com.example.reservation.Repository.UserRepository;
 import com.example.reservation.Request.ReservationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,11 +41,11 @@ public class ReservationService {
         return userRepository.save(user);
     }
 
-    public synchronized Reservation reserve(ReservationRequest reservationRequest){
+    public synchronized ResponseEntity<?> reserve(ReservationRequest reservationRequest){
         User user = userRepository.findByUserId(reservationRequest.getUserId());
         Flight flight = flightRepository.findByFlightNumber(reservationRequest.getFlightNumber());
         if(flight == null)
-            return null;
+            return new ResponseEntity<>("No such flight exists", HttpStatus.BAD_GATEWAY);
         if(user == null)
             user = registerUser(reservationRequest.getAgentId());
         Reservation reservation = new Reservation();
@@ -60,36 +62,36 @@ public class ReservationService {
             case 1 : if(!seatMap.getRow1())
                         seatMap.setRow1(true);
                     else
-                        return null;
+                        return new ResponseEntity<>("Seat already booked !!",HttpStatus.BAD_REQUEST);
                     break;
             case 2 : if(!seatMap.getRow2())
                 seatMap.setRow2(true);
             else
-                return null;
+                return new ResponseEntity<>("Seat already booked !!",HttpStatus.BAD_REQUEST);
             break;
             case 3 : if(!seatMap.getRow3())
                 seatMap.setRow3(true);
             else
-                return null;
+                return new ResponseEntity<>("Seat already booked !!",HttpStatus.BAD_REQUEST);
             break;
             case 4 : if(!seatMap.getRow4())
                 seatMap.setRow4(true);
             else
-                return null;
+                return new ResponseEntity<>("Seat already booked !!",HttpStatus.BAD_REQUEST);
             break;
             case 5 : if(!seatMap.getRow5())
                 seatMap.setRow5(true);
             else
-                return null;
+                return new ResponseEntity<>("Seat already booked !!",HttpStatus.BAD_REQUEST);
             break;
         }
         userRepository.save(user);
         seatMapRepository.save(seatMap);
         reservationRepository.save(reservation);
-        return reservation;
+        return new ResponseEntity<>(reservation,HttpStatus.OK);
     }
 
-    public boolean cancel(Integer resId){
+    public ResponseEntity<?> cancel(Integer resId){
         Reservation reservation = reservationRepository.findByResId(resId);
         Integer flightNumber = reservation.getFlightNumber();
         SeatMap seatMap = seatMapRepository.findByFlightNumber(flightNumber);
@@ -107,7 +109,7 @@ public class ReservationService {
         }
         seatMapRepository.save(seatMap);
         reservationRepository.delete(reservation);
-        return true;
+        return new ResponseEntity<>("Reservation cancelled & seat vacated",HttpStatus.OK);
     }
 
 }

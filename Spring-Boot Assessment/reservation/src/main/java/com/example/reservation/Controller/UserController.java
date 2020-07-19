@@ -4,6 +4,8 @@ import com.example.reservation.Model.Reservation;
 import com.example.reservation.Model.User;
 import com.example.reservation.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -19,9 +21,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public User registerUser(@RequestBody User details){
-        if(details.getEmail().isEmpty() || details.getEmail().equals(null))
-            return null;
+    public ResponseEntity<?> registerUser(@RequestBody User details){
+        if(details.getEmail() == null || details.getEmail().isEmpty() || details.getEmail().equals(null))
+            return new ResponseEntity<>("Email mandatory", HttpStatus.BAD_REQUEST);
         return userService.registerUser(details);
     }
 

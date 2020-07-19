@@ -5,6 +5,8 @@ import com.example.reservation.Model.User;
 import com.example.reservation.Repository.ReservationRepository;
 import com.example.reservation.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +24,9 @@ public class UserService {
         this.reservationRepository = reservationRepository;
     }
 
-    public synchronized User registerUser(User user){
+    public synchronized ResponseEntity<?> registerUser(User user){
         userRepository.save(user);
-        return user;
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     public List<Reservation> getReservationsByUser(Integer id){

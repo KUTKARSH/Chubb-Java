@@ -4,6 +4,7 @@ import com.example.reservation.Model.Reservation;
 import com.example.reservation.Request.ReservationRequest;
 import com.example.reservation.Service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,12 +19,12 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "/reserve", method = RequestMethod.POST)
-    public Reservation reserve(@RequestBody ReservationRequest reservationRequest){
+    public ResponseEntity<?> reserve(@RequestBody ReservationRequest reservationRequest){
         return reservationService.reserve(reservationRequest);
     }
 
     @RequestMapping(value = "/cancel/{resId}",method = RequestMethod.GET)
-    public boolean cancel(@PathVariable Integer resId){
+    public ResponseEntity<?> cancel(@PathVariable Integer resId){
         return reservationService.cancel(resId);
     }
 
