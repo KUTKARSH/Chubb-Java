@@ -1,8 +1,16 @@
+--------------------------ASSUMPTIONS---------------------------------------
+
 // NOTE : H2 in-memory database has been used for simplicity in this assessment
 // so that the Guvi examiners can test the app on the fly without setting up anything.
 // Moreover, adding SQL Server database is no big deal, you have to just change the
-application.properties by file specifyning jdbc url, username, password & Dialect type
+// application.properties by file specifyning jdbc url, username, password & Dialect type
 
+// I have maintained a Seat Map as a seperate model(table) 
+// Each time when a seat is booked, the value in the map is set to true
+// False, if it is vacant
+
+
+-------------------------------SOLUTIONS-------------------------------------
 // register as a user with proper information
 // role can be user/agent/admin
 
@@ -14,6 +22,7 @@ curl --location --request POST 'http://localhost:8080/user/register' \
     "role" : "user"
 }'
 
+-----------------------------------------------------------------------
 // create a flight
 
 curl --location --request POST 'http://localhost:8080/flight/create' \
@@ -26,7 +35,7 @@ curl --location --request POST 'http://localhost:8080/flight/create' \
     "departure" : "9:10 AM",
     "arrival" : "11:30 AM"
 }'
-
+-----------------------------------------------------------------------
 // reserve a seat, here if user account is created by agent, then userId will be null in request body
 // if a user books a set for himself/herself, then agentId will be null in request body
 
@@ -38,23 +47,24 @@ curl --location --request POST 'http://localhost:8080/reservation/reserve' \
     "agentId" : 2,
     "userId" : 2
 }'
-
+-----------------------------------------------------------------------
 // get seat availability for a flightId
 
 curl --location --request GET 'http://localhost:8080/flight/getMap/103'
-
+-----------------------------------------------------------------------
 // get reservations by userId
 
 curl --location --request GET 'http://localhost:8080/user/getReservations/1'
-
+-----------------------------------------------------------------------
 // cancel a particular reservation id
 
 curl --location --request GET 'http://localhost:8080/reservation/cancel/5'
-
+-----------------------------------------------------------------------
 // get clients for a given agent id
 
 curl --location --request GET 'http://localhost:8080/user/getClients/2'
-
+-----------------------------------------------------------------------
 // admin endpoint to fetch all reservations
 
 curl --location --request GET 'http://localhost:8080/admin/getAllReservations'
+-----------------------------------------------------------------------
