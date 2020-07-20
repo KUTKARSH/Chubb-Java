@@ -30,7 +30,13 @@
       <change afterPath="$PROJECT_DIR$/../Day4Reboot/mvnw" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Day4Reboot/mvnw.cmd" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Day4Reboot/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Controller/UserController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Day4RebootApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Request/AuthRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Request/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/java/com/example/Day4Reboot/Service/UserService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Day4Reboot/src/test/java/com/example/Day4Reboot/Day4RebootApplicationTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../MongoDemo/pom.xml" afterDir="false" />
@@ -38,6 +44,7 @@
       <change afterPath="$PROJECT_DIR$/.idea/Spring-Boot Assessment.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Day-20/demo/src/main/java/com/example/PatchDemo/demo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Day-20/demo/src/main/java/com/example/PatchDemo/demo/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,6 +91,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

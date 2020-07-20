@@ -12,12 +12,6 @@ public class User {
         return id;
     }
 
-//    public User(Integer id, String name, String phoneNumber) {
-//        this.id = id;
-//        this.name = name;
-//        this.phoneNumber = phoneNumber;
-//    }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -37,6 +31,5 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
 
 }
