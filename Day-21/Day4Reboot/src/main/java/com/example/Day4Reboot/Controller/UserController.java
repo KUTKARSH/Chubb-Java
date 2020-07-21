@@ -1,9 +1,9 @@
-package com.example.Day4Reboot.Controller;
+package com.example.Day4Reboot.controller;
 
-import com.example.Day4Reboot.Model.User;
-import com.example.Day4Reboot.Request.AuthRequest;
-import com.example.Day4Reboot.Request.LoginRequest;
-import com.example.Day4Reboot.Service.UserService;
+import com.example.Day4Reboot.model.User;
+import com.example.Day4Reboot.request.AuthRequest;
+import com.example.Day4Reboot.request.LoginRequest;
+import com.example.Day4Reboot.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,36 +11,36 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
+    public UserController(UserServiceImpl userServiceImpl){
+        this.userServiceImpl = userServiceImpl;
     }
 
     @RequestMapping(value = "/user",method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody User user){
-        return userService.create(user);
+        return userServiceImpl.create(user);
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
-        return userService.login(loginRequest);
+        return userServiceImpl.login(loginRequest);
     }
 
     @RequestMapping(value = "/user/{id}",method = RequestMethod.POST)
     public ResponseEntity<?> getUser(@RequestBody AuthRequest authRequest, @PathVariable Integer id){
-        return userService.getUser(authRequest,id);
+        return userServiceImpl.getUser(authRequest,id);
     }
 
     @RequestMapping(value = "/user",method = RequestMethod.PUT)
     public ResponseEntity<?> update(@RequestBody User user,@RequestParam Integer id){
-        return userService.update(user,id);
+        return userServiceImpl.update(user,id);
     }
 
     @RequestMapping(value = "/search/{username}")
     public ResponseEntity<?> searchByName(@PathVariable String username){
-        return userService.searchByName(username);
+        return userServiceImpl.searchByName(username);
     }
 
 }

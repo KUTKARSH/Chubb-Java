@@ -1,6 +1,6 @@
-package com.example.Day4Reboot.Repository;
+package com.example.Day4Reboot.repository;
 
-import com.example.Day4Reboot.Model.User;
+import com.example.Day4Reboot.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User,Integer> {

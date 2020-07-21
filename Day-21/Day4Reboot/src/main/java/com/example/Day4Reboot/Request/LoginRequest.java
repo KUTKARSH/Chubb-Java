@@ -1,4 +1,4 @@
-package com.example.Day4Reboot.Request;
+package com.example.Day4Reboot.request;
 
 public class LoginRequest {
     private String userName;

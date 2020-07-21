@@ -1,4 +1,4 @@
-package com.example.Day4Reboot.Model;
+package com.example.Day4Reboot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
